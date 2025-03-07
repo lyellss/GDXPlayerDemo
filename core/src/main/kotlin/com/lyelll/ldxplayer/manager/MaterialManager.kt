@@ -3,6 +3,9 @@ package com.lyelll.ldxplayer.manager
 import com.lyelll.ldxplayer.model.*
 import com.lyelll.ldxplayer.model.meta.ImageMaterialMeta
 import com.lyelll.ldxplayer.model.meta.ScrollingImageMaterialMeta
+import com.lyelll.ldxplayer.model.meta.ScrollingTextMaterialMeta
+import com.lyelll.ldxplayer.model.meta.TextMaterialMeta
+import com.lyelll.ldxplayer.model.meta.VideoMaterialMeta
 
 /**
  * 素材管理器，负责管理所有素材的生命周期和缓存
@@ -16,25 +19,25 @@ class MaterialManager {
      * @param path 素材路径
      * @param params 额外参数，如文本内容、滚动速度等
      */
-    fun createMaterial(meta: MaterialMeta): Material {
-        // 检查缓存中是否存在
-        materialCache[meta.path]?.let { return it }
-
-        // 根据类型创建对应的素材
-        val material = when (meta) {
-            is ImageMaterialMeta -> createImageMaterial(meta)
-            is ScrollingImageMaterialMeta -> createScrollingImageMaterial(meta)
-            is TextMaterialMeta -> createTextMaterial(meta)
-            is ScrollingTextMaterialMeta -> createScrollingTextMaterial(meta)
-            is VideoMaterialMeta -> createVideoMaterial(meta)
-            is PdfMaterialMeta -> createPdfMaterial(meta)
-            is GifMaterialMeta -> createGifMaterial(meta)
-        }
-
-        // 缓存并返回素材
-        materialCache[meta.path] = material
-        return material
-    }
+//    fun createMaterial(meta: MaterialMeta): Material {
+//        // 检查缓存中是否存在
+//        materialCache[meta.path]?.let { return it }
+//
+//        // 根据类型创建对应的素材
+//        val material = when (meta) {
+//            is ImageMaterialMeta -> createImageMaterial(meta)
+//            is ScrollingImageMaterialMeta -> createScrollingImageMaterial(meta)
+//            is TextMaterialMeta -> createTextMaterial(meta)
+//            is ScrollingTextMaterialMeta -> createScrollingTextMaterial(meta)
+//            is VideoMaterialMeta -> createVideoMaterial(meta)
+//            is PdfMaterialMeta -> createPdfMaterial(meta)
+//            is GifMaterialMeta -> createGifMaterial(meta)
+//        }
+//
+//        // 缓存并返回素材
+//        materialCache[meta.path] = material
+//        return material
+//    }
 
     /**
      * 释放指定素材
@@ -61,22 +64,22 @@ class MaterialManager {
     }
 
     private fun createTextMaterial(meta: TextMaterialMeta): Material {
-        return TextMaterial(meta.text, meta.fontSize, meta.color)
+        return TextMaterial(meta)
     }
 
     private fun createScrollingTextMaterial(meta: ScrollingTextMaterialMeta): Material {
-        return ScrollingTextMaterial(meta.text, meta.fontSize, meta.color, meta.speed)
+        return ScrollingTextMaterial(meta)
     }
 
     private fun createVideoMaterial(meta: VideoMaterialMeta): Material {
-        return VideoMaterial(meta.path)
+        return VideoMaterial(meta)
     }
 
-    private fun createPdfMaterial(meta: PdfMaterialMeta): Material {
-        return PdfMaterial(meta.path)
-    }
+//    private fun createPdfMaterial(meta: PdfMaterialMeta): Material {
+//        return PdfMaterial(meta.path)
+//    }
 
-    private fun createGifMaterial(meta: GifMaterialMeta): Material {
-        return GifMaterial(meta.path)
-    }
+//    private fun createGifMaterial(meta: GifMaterialMeta): Material {
+//        return GifMaterial(meta.path)
+//    }
 }

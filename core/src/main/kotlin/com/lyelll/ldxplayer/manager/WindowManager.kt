@@ -9,7 +9,7 @@ import com.lyelll.ldxplayer.model.Material
  */
 class WindowManager {
     private val windows = mutableListOf<Window>()
-    
+
     /**
      * 创建新窗口
      */
@@ -19,7 +19,7 @@ class WindowManager {
         sortWindows()
         return window
     }
-    
+
     /**
      * 删除窗口
      */
@@ -27,32 +27,32 @@ class WindowManager {
         window.dispose()
         windows.remove(window)
     }
-    
+
     /**
      * 根据索引获取窗口
      */
     fun getWindow(index: Int): Window? = windows.getOrNull(index)
-    
+
     /**
      * 获取所有窗口
      */
     fun getAllWindows(): List<Window> = windows.toList()
-    
+
     /**
      * 更新窗口层级
      */
     fun updateWindowZIndex(window: Window, newZIndex: Int) {
-        window.setZIndex(newZIndex)
+//        window.setZIndex(newZIndex)
         sortWindows()
     }
-    
+
     /**
      * 根据层级排序窗口
      */
     private fun sortWindows() {
         windows.sortBy { it.zIndex }
     }
-    
+
     /**
      * 渲染所有窗口
      */
@@ -61,7 +61,7 @@ class WindowManager {
             window.render(batch, delta)
         }
     }
-    
+
     /**
      * 释放所有窗口资源
      */

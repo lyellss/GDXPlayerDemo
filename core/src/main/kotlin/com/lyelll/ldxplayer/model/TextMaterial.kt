@@ -9,15 +9,15 @@ import ktx.assets.disposeSafely
 /**
  * 静态文本素材
  */
-class TextMaterial(val meta: TextMaterialMeta) : Material {
+open class TextMaterial(val meta: TextMaterialMeta) : Material {
     private var font: BitmapFont? = null
     private var glyphLayout: GlyphLayout? = null
     private var isPaused: Boolean = false
 
     init {
         font = BitmapFont().apply {
-            data.setScale(meta.fontSize / data.fontFile.fontSize)
-            setColor(meta.color)
+//            data.setScale(meta.fontSize / data.fontFile.fontSize)
+//            setColor(meta.color)
         }
         glyphLayout = GlyphLayout(font, meta.text)
     }

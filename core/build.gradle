@@ -9,6 +9,7 @@ dependencies {
   api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
   api "com.badlogicgames.gdx-video:gdx-video:1.3.2-SNAPSHOT"
+//  api "com.badlogicgames.gdx-video:gdx-video-android:1.3.2-SNAPSHOT"
   api "com.github.tommyettinger:anim8-gdx:$anim8Version"
   api "com.kotcrab.vis:vis-ui:$visUiVersion"
   api "io.github.libktx:ktx-actors:$ktxVersion"

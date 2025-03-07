@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Array
-import com.lyelll.ldxplayer.utils.GifDecoder
+//import com.lyelll.ldxplayer.utils.GifDecoder
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 
@@ -21,27 +21,27 @@ class GifMaterial(path: String) : Material {
 
     init {
         // 加载GIF文件并解析帧
-        val gifDecoder = GifDecoder()
-        if (gifDecoder.read(path.toInternalFile())) {
-            // 创建帧动画
-            frames = Array<TextureRegion>().apply {
-                for (i in 0 until gifDecoder.frameCount) {
-                    gifDecoder.getFrame(i)?.let { pixmap ->
-                        val texture = Texture(pixmap)
-                        add(TextureRegion(texture))
-                    }
-                }
-            }
+//        val gifDecoder = GifDecoder()
+//        if (gifDecoder.read(path.toInternalFile())) {
+//             创建帧动画
+//            frames = Array<TextureRegion>().apply {
+//                for (i in 0 until gifDecoder.frameCount) {
+//                    gifDecoder.getFrame(i)?.let { pixmap ->
+//                        val texture = Texture(pixmap)
+//                        add(TextureRegion(texture))
+//                    }
+//                }
+//            }
 
             // 设置动画
-            if (frames?.size ?: 0 > 0) {
-                animation = Animation<TextureRegion>(gifDecoder.getDelay(0) / 1000f, frames).apply {
-                    playMode = if (isLooping) Animation.PlayMode.LOOP else Animation.PlayMode.NORMAL
-                }
-            }
+//            if (frames?.size ?: 0 > 0) {
+//                animation = Animation<TextureRegion>(gifDecoder.getDelay(0) / 1000f, frames).apply {
+//                    playMode = if (isLooping) Animation.PlayMode.LOOP else Animation.PlayMode.NORMAL
+//                }
+//            }
         }
-        gifDecoder.dispose()
-    }
+//        gifDecoder.dispose()
+//    }
 
     override fun render(batch: SpriteBatch, x: Float, y: Float, width: Float, height: Float) {
         animation?.getKeyFrame(stateTime)?.let { frame ->
