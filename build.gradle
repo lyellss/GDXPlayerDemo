@@ -7,6 +7,7 @@ buildscript {
     google()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
   }
   dependencies {
     classpath "com.android.tools.build:gradle:8.5.2"
@@ -25,6 +26,13 @@ allprojects {
       outputDir file('build/classes/java/main')
       testOutputDir file('build/classes/java/test')
     }
+  }
+
+  ext {
+    minSdk = 17
+    targetSdk = 33
+    compileSdk = 33
+    buildTools = '33.0.2'
   }
 }
 
@@ -58,7 +66,7 @@ configure(subprojects - project(':android')) {
   }
   compileKotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
   compileTestKotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-  
+
 }
 
 subprojects {
@@ -69,8 +77,8 @@ subprojects {
     maven { url 'https://s01.oss.sonatype.org' }
     // You may want to remove the following line if you have errors downloading dependencies.
     mavenLocal()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-    maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url 'https://jitpack.io' }
   }
 }
